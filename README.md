@@ -218,5 +218,18 @@ override func viewDidLoad() {
        }
      }
 
+## 발생한 오류
+SettingViewController의 class 연결 중 inherit module from target을 클릭 안해서 
+Thread 1: Exception: "[<UIViewController 0x7f9832207800>
+이런 이상한 에러가 떴다
+알아내느라 한참 걸렸다. 
+그리고 설정 화면의 설정 값이 유지가 안된다는 문제가 있었는데
+관련 코드를 더 작성해 해결했다.
 
+### 완성본
 
+![스크린샷 2022-06-27 오후 11 52 36](https://user-images.githubusercontent.com/102133961/175970739-c0ff8688-7e06-46d0-acc4-1470f1a448a0.jpg)<br>
+![스크린샷 2022-06-27 오후 11 52 49](https://user-images.githubusercontent.com/102133961/175970766-4fe9540d-f2bf-45ed-8e5a-58f44690b484.jpg)<br>
+![스크린샷 2022-06-27 오후 11 53 34](https://user-images.githubusercontent.com/102133961/175970791-b1524896-2d04-45f1-8522-9cb8a882489a.jpg)<br>
+![스크린샷 2022-06-27 오후 11 53 39](https://user-images.githubusercontent.com/102133961/175970818-f5d95f41-0fa8-4b9a-8570-969244f00918.jpg)<br>
+![스크린샷 2022-06-27 오후 11 53 48](https://user-images.githubusercontent.com/102133961/175970838-570e6dbf-ac7c-4dd0-a56f-dcbf91ec7b9b.jpg)<br>
