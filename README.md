@@ -45,6 +45,7 @@ ios에서 화면을 전환하는 방식에는 크게 두 가지가 있다<br>
 ## View Controller에서 다른 View Controller를 호출하여 전환하기
 presentation방식이라고 부르기도 한다.<br>
 기존 뷰 컨트롤러 위에 새로운 뷰 컨트롤러를 가져와 덮는 방식이다<br>
+주의해야 할 점은 left edge motion으로 이전화면으로 돌아갈 수 없다는 점이다. 오직 stack 즉 네비게이션 스택 방식으로 구현해야 left edge 모션을 이용할 수 있다.
 <br>
 func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil)<br>
 <br>
