@@ -71,6 +71,7 @@ func popViewController(animated: Bool) -> UIViewController?<br>
 <br>
 위에서 보이듯이 pushViewController메소드를 사용해 네비게이션 스택에 자식을 push하고<br>
 popViewController 메소드를 이용해 네비게이션 스택에서 pop한다.<br>
+주의) View Controller를 인스턴스화 하는 방법은 guard let viewController = self.storyboard?.instantiateViewController(identifier: "스토리보드지정식별자" ) else {return}
 <br>
 ## 화면 전환용 객체 세그웨이(segueway)를 이용해 화면 전환하기
 <br>
