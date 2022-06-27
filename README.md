@@ -130,8 +130,85 @@ UIViewController의 high 클래스를 생성할 때, 이 메소드들을 오버�
 뷰가 사라지는 것과 관련된 추가 작업<br>
 <br>
 
+### 화면 간 데이터 전달 방법
+instantiateViewController 사용처에서 이동할 뷰 컨트롤러로 다운캐스팅하면 (guard문 이용)
+이동할 뷰 컨트롤러의 멤버에 접근할 수 있다.
+이전화면으로 데이터 전달은 delegate 패턴 이용
+delegate 패턴은 ios에서 자주 사용되는 디자인 패턴
+delegate는 위임하다라는 사전적 의미를 갖고 있다.->위임자라고 생각하자!
+위임자를 갖고 있는 객체가 다른 객체에게 자신의 일을 위임하는 디자인 패턴이다
 
+데이터를 전달할 화면에 프로토콜을 하나 정의한다
 
+protocol SendDataDelegate: AnyObject {
+  func sendData(name: String)
+  }
+  
+  weak var delegate: SendDataDelegate?
+  
+  delegate 변수도 작성해 준다(weak반드시 붙여주기: 강한 순환 참조 발생할 수도 있어서)
+  
+  이전화면으로 이동하는 버튼 액션 함수에다 sendData 함수를 작성해준다
+
+  
+  @IBAction func tapBackButton(_ sender: UIButton) {
+    self.delegate?.sendData(name: "Jinyong")
+    self.presentingViewController?.dismiss(animated: true, completion: nil)
+      }
+    }
+
+이렇게 코드를 작성하면 데이터를 전달받은 뷰 컨트롤러에서 sendData 프로토콜을 채택하고 delegate를 위임받게 되면 sendDatadelegate 프로토콜을 채택한 이전화면에서 
+정의된 sendData함수가 실행되게 된다. 그럼 이전 화면 뷰 컨트롤러에서 delegate를 위임받아보겠다
+
+이전 화면이 ViewController 클래스이면 
+import UIKit
+
+class ViewController: UIViewController, SendDataDelegate {
+
+.
+.
+.
+
+ @IBAction func tapCodePresentButton(_ sender: UIButton) {
+    guard let viewController = self.storyboard?.instantiateViewController(identifier: "CodePresentViewController") as? CodePresentViewController else {return}
+    viewController.modalPresentationStyle = .fullScreen
+    viewController.name = "Jinyong"
+    viewController.delegate = self
+    self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func sendData(name: String) {
+    self.nameLabel.text = name
+    self.nameLabel.sizeToFit()
+    }
+    .
+    .
+    .
+    
+    }
+## 세그웨이로 구현된 화면 전환에서 데이터 전달하기
+마찬가지로 전환되는 뷰 컨트롤러 인스턴스에 접근해 프로퍼티로 데이터를 전달한다
+세그웨이로 구현된 화면전환 방법에서 전환되는 화면의 값을 전달하기 위한 제일 좋은 위치는 전처리 prepare 메소드이다.
+prepare 메소드는 오버라이드 하면 세그웨이를 실행하기 직전에 시스템에 의해 자동으로 호출되기 때문이다.
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+if let viewController = segue.destination as? SeguePushViewController {
+     viewController.name = "전달하려는 값" // name은 그쪽 프로퍼티
+   }
+}
+
+---> 전달된 쪽
+@IBOutlet weak var nameLabel: UILabel!
+var name: String?
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+  print("SeguePushViewController 뷰가 로드 되었다")
+  if let name = name {
+    self.nameLabel.text = name
+    self.nameLabel.sizeToFit()
+       }
+     }
 
 
 
