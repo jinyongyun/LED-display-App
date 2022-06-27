@@ -92,17 +92,18 @@ Show Detail: Split 뷰에서 사용하는 세그웨이로 아이폰에서 사용
 Present Modally: 이전 뷰 컨트롤러를 덮으면서 새로운 화면이 나타난다 (앞에서 이야기한 presentation 방식으로 작동한다)<br>
 Present As Popover: 아이패드에서 사용되는 것으로 팝업창을 띄울 때 사용(아이폰에서는 사용 안 됨)<br>
 Custom: 세그웨이를 사용자가 원하는 방식으로 커스텀할 때 사용한다.<br>
-<br>
+
 ### ViewController Life Cycle
 UIViewController의 객체에는 뷰 객체를 관리하는 메소드들이 있다.<br>
 이 메소드들은 각자 자신들이 불려져야 하는 타이밍에 ios 시스템에 의해 자동으로 호출된다.<br>
 UIViewController의 high 클래스를 생성할 때, 이 메소드들을 오버라이드하여 라이프 사이클 상황에 맞게 적절한 로직들을 추가할 수 있다.<br>
-뷰가 보여지는 상황은 크게 네가지로 분리할 수 있다.
+뷰가 보여지는 상황은 크게 네가지로 분리할 수 있다.<br>
 -Appearing: 뷰가 화면에 나타나고 있다<br>
 -Apppeard: 뷰가 화면에 나타났다<br>
 -Disappearing: 뷰가 화면에서 사라지고 있다<br>
 -Disappeared: 뷰가 화면에서 사라짐<br>
-<br>
+
+
 # viewDidLoad()
 뷰 컨트롤러의 모든 뷰들이 메모리에 로드됐을 때 호출<br>
 메모리에 처음 로드될 때 한 번만 호출<br>
@@ -118,12 +119,12 @@ UIViewController의 high 클래스를 생성할 때, 이 메소드들을 오버�
 뷰 컨트롤러의 뷰가 뷰 계층에 추가된 후 호출<br>
 뷰를 나타낼 때 필요한 추가 작업<br>
 애니메이션을 시작하는 작업<br>
-<br>
+
 # viewWillDisappear()
 뷰 컨트롤러의 뷰가 뷰 계층에서 사라지기 전에 호출합니다<br>
 뷰가 생성된 뒤 작업한 내용을 되돌리는 작업<br>
 최종적으로 데이터를 저장하는 작업<br>
-<br>
+
 # viewDidDisappear()
 뷰 컨트롤러의 뷰가 뷰 계층에서 사라진 뒤에 호출<br>
 뷰가 사라지는 것과 관련된 추가 작업<br>
