@@ -61,7 +61,7 @@ dismiss 메소드는 이전화면으로 돌아가게 해주는 메소드이다<b
 그래서 첫 번째 파라미터는 애니메이션 설정, 두 번째는 completion 클로저로 구성되어있다.<br>
 즉 화면을 걷어내는 방식으로 화면 전환을 처리하는 메소드라고 보면 된다.<br>
 <br>
-## Nacigatoin Controller를 사용하여 화면 전환하기
+## Navigation Controller를 사용하여 화면 전환하기
 Navigation Controller는 계층적인 뷰 컨트롤러 구조를 관리하기 위한 컨트롤러이다.<br>
 앞에서 네이게이션 스택으로 자식을 관리한다고 했다.<br>
 <br>
